@@ -1,0 +1,9 @@
+.vs
+.vsconfig
+Library
+Logs
+Obj
+UserSettings
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp.csproj
+Snake.sln
