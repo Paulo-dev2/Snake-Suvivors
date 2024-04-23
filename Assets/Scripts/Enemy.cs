@@ -1,17 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
     public Transform snake; // Referência ao transform do jogador
     private float followSpeed = 3f; // Velocidade de seguimento do inimigo
     private float smooth = 3f;
+    private float health = 100;
 
     private Animator animator;
     private Vector3 previousPosition;
 
-    // Start is called before the first frame update
+    public UnityEvent EnemyDestroyedEvent;
+
+
     void Start()
     {
         snake = GameObject.FindGameObjectWithTag("Snake").transform;
@@ -39,6 +41,7 @@ public class Enemy : MonoBehaviour
             {
                 // O inimigo está se movendo
                 animator.SetInteger("transition", 1);
+                CheckMovementDirection();
             }
             else
             {
@@ -51,5 +54,25 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    void CheckMovementDirection()
+    {
+        float horizontal = Input.GetAxis("Horizontal");
+        transform.eulerAngles = horizontal > 0 ? new Vector3(0, 0, 0) : new Vector3(0, 180, 0);
+    }
+
+    public void DestroyEnemy()
+    {
+        Destroy(gameObject);
+        // Chamando o evento de destruição do inimigo
+        if (EnemyDestroyedEvent != null) EnemyDestroyedEvent.Invoke();
+    }
+
+    public void Damage(float dmg)
+    {
+        health -= dmg;
+        animator.SetTrigger("hit");
+
+        if (health <= 0) DestroyEnemy();
+    }
+
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Snake
   - Background
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -1,18 +1,24 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] private Transform enemyPrefab;
-    [SerializeField] private Transform enemyInGame;
-    // Start is called before the first frame update
+    [SerializeField] public Transform applePrefab;
+    private Transform appleInGame;
+    private Transform enemyInGame;
+
     void Start()
     {
         StartCoroutine(SpawnEnemies());
+        SpawnApple();
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        CheckAppleStatus();
+    }
+
     private IEnumerator SpawnEnemies()
     {
         while (true)
@@ -31,6 +37,30 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void SpawnEnemy()
+    {
+        // Instancia o inimigo e se inscreve para o evento de destruição
+        enemyInGame = Instantiate(enemyPrefab, new Vector3(Random.Range(-10, 10), Random.Range(-10, 7), 0), Quaternion.identity);
+        enemyInGame.GetComponent<Enemy>().EnemyDestroyedEvent.AddListener(OnEnemyDestroyed);
+    }
 
-    private Transform SpawnEnemy() => Instantiate(enemyPrefab, new Vector3(UnityEngine.Random.Range(-10, 10), UnityEngine.Random.Range(-10, 7), 0), Quaternion.identity);
+    private void SpawnApple()
+    {
+        appleInGame = Instantiate(applePrefab, new Vector3(Random.Range(-10, 10), Random.Range(-10, 7), 0), Quaternion.identity);
+    }
+
+    private void CheckAppleStatus()
+    {
+        if (appleInGame == null)
+        {
+            SpawnApple();
+        }
+    }
+
+    // Método chamado quando um inimigo é destruído
+    void OnEnemyDestroyed()
+    {
+        // Quando um inimigo é destruído, chamamos a função SpawnApple() para substituí-lo por uma maçã
+        SpawnApple();
+    }
 }
