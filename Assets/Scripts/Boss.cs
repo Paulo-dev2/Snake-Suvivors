@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour
+public class Boss : MonoBehaviour
 {
     private Transform snake; // Referência ao transform do jogador
-    private float followSpeed = 3f; // Velocidade de seguimento do inimigo
+    private float followSpeed = 2.5f; // Velocidade de seguimento do inimigo
     private float smooth = 3f;
-    private float health = 20;
-    public float damage = 8f;
+    private float health = 150;
+    public float damage = 25f;
 
     private Animator animator;
     private Vector3 previousPosition;
@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
         transform.eulerAngles = horizontal > 0 ? new Vector3(0, 0, 0) : new Vector3(0, 180, 0);
     }
 
-    public void DestroyEnemy()
+    public void DestroyBoss()
     {
         Destroy(gameObject);
         // Chamando o evento de destruição do inimigo
@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
         health -= dmg;
         animator.SetTrigger("hit");
 
-        if (health <= 0) DestroyEnemy();
+        if (health <= 0) DestroyBoss();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

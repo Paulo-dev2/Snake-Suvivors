@@ -3,21 +3,25 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
+    private float health = 100;
     private float speed = 6;
     private float horizontal = 0;
     private float vertical = 0;
     private bool isWalking = false;
-    public float health;
 
     public GameObject bow;
     public Transform firePoint;
+    public Transform objectHealth;
 
     private Animator animator;
+    private Vector3 initialScale;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         StartCoroutine(BowFireRoutine());
+
+        initialScale = objectHealth.localScale;
     }
 
     void Update()
@@ -64,5 +68,19 @@ public class Snake : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f); // Espera 1 segundo antes de resetar a animação
         animator.SetInteger("transition", 0);
+    }
+
+    public void Damage(float dmg)
+    {
+        health -= dmg;
+
+        // Atualiza a escala do objeto de saúde conforme a quantidade de dano recebida
+        float newScaleX = Mathf.Clamp(health / 100f, 0f, 1f);
+        objectHealth.localScale = new Vector3(initialScale.x * newScaleX, initialScale.y, initialScale.z);
+
+        if (health <= 0)
+        {
+            GameController.instance.GameOver();
+        }
     }
 }

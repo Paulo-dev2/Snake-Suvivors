@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.2425, y: -1.8462, z: 0}
-  m_LocalScale: {x: 0.58181643, y: 0.5574742, z: 1}
+  m_LocalScale: {x: 0.29434094, y: 0.34187147, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -158,7 +158,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snake: {fileID: 0}
-  heath: 100
+  EnemyDestroyedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &-4354578821915470952
 Rigidbody2D:
   serializedVersion: 4
