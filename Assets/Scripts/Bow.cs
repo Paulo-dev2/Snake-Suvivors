@@ -30,10 +30,17 @@ public class Bow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+
+        switch (collision.gameObject.tag)
         {
-            collision.GetComponent<Enemy>().Damage(damage);
-            Destroy(gameObject);
+            case "Enemy":
+                collision.GetComponent<Enemy>().Damage(damage);
+                Destroy(gameObject);
+                break;
+            case "Boss":
+                collision.GetComponent<Boss>().Damage(damage);
+                Destroy(gameObject);
+                break;
         }
     }
 }

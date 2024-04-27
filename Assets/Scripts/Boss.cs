@@ -12,7 +12,7 @@ public class Boss : MonoBehaviour
     private Animator animator;
     private Vector3 previousPosition;
 
-    public UnityEvent EnemyDestroyedEvent;
+    public UnityEvent BossDestroyedEvent;
 
 
     void Start()
@@ -65,7 +65,7 @@ public class Boss : MonoBehaviour
     {
         Destroy(gameObject);
         // Chamando o evento de destruição do inimigo
-        if (EnemyDestroyedEvent != null) EnemyDestroyedEvent.Invoke();
+        if (BossDestroyedEvent != null) BossDestroyedEvent.Invoke();
     }
 
     public void Damage(float dmg)
@@ -81,7 +81,6 @@ public class Boss : MonoBehaviour
         //Snake
         if (collision.gameObject.tag == "Snake")
         {
-            Debug.Log("Atacou");
             collision.gameObject.GetComponent<Snake>().Damage(damage);
         }
     }

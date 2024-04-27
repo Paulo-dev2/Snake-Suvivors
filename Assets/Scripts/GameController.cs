@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     private Transform boosInGame;
     private float time;
     private bool bossSpawned = false;
-
+    private int countEatAplle = 0;
 
     public static GameController instance;
 
@@ -96,7 +96,7 @@ public class GameController : MonoBehaviour
 
                 // Instancia o boss e se inscreve para o evento de destruição
                 boosInGame = Instantiate(bossPrefab, GetRandomSpawnPosition(), Quaternion.identity);
-                boosInGame.GetComponent<Boss>().EnemyDestroyedEvent.AddListener(OnEnemyDestroyed);
+                boosInGame.GetComponent<Boss>().BossDestroyedEvent.AddListener(OnEnemyDestroyed);
 
                 bossSpawned = true; // Define o flag para true para indicar que um boss foi spawnado
 
@@ -122,7 +122,12 @@ public class GameController : MonoBehaviour
         enemyInGame.GetComponent<Enemy>().EnemyDestroyedEvent.AddListener(OnEnemyDestroyed);
     }
 
-    private void SpawnApple() => appleInGame = Instantiate(applePrefab, GetRandomSpawnPosition(), Quaternion.identity);
+    private void SpawnApple() 
+     {
+        appleInGame = Instantiate(applePrefab, GetRandomSpawnPosition(), Quaternion.identity);
+        countEatAplle++;
+        Debug.Log(countEatAplle);
+     }
 
     private Vector3 GetRandomSpawnPosition() => new Vector3(UnityEngine.Random.Range(-10f, 10f), UnityEngine.Random.Range(-7f, 7f), 0f);
 

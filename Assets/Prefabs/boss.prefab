@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1018270638917329488}
   m_Layer: 0
   m_Name: boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 25
-  EnemyDestroyedEvent:
+  BossDestroyedEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!95 &1742276368814467277
