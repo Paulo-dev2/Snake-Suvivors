@@ -81,6 +81,7 @@ public class Boss : MonoBehaviour
         //Snake
         if (collision.gameObject.tag == "Snake")
         {
+            Debug.Log("Atacou");
             collision.gameObject.GetComponent<Snake>().Damage(damage);
         }
     }

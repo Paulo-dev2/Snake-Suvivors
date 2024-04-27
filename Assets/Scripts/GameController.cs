@@ -6,9 +6,10 @@ using System;
 using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
+    [SerializeField] private TMP_Text level;
     [SerializeField] private TMP_Text timeCurrent;
-    [SerializeField] private Transform enemyPrefab;
-    [SerializeField] private Transform boosPrefab;
+    [SerializeField] private Transform[] enemyPrefab;
+    [SerializeField] private Transform[] boosPrefab;
     [SerializeField] private Transform applePrefab;
     [SerializeField] private GameObject pauseObj;
     [SerializeField] private GameObject gameOverObj;
@@ -58,7 +59,7 @@ public class GameController : MonoBehaviour
 
     private void CheckTimeStatus()
     {
-        if (time >= 10 && !bossSpawned)
+        if (time >= 30 && !bossSpawned)
         {
             StartCoroutine(SpawnBoss());
             bossSpawned = true;
@@ -87,25 +88,43 @@ public class GameController : MonoBehaviour
     {
         while (true)
         {
-            SpawnBos();
-            yield return new WaitForSeconds(40);
+            // Espera até que o boss não tenha sido spawnado antes de instanciá-lo novamente
+            if (!bossSpawned)
+            {
+                // Escolhe aleatoriamente um prefab de boss do array
+                Transform bossPrefab = boosPrefab[UnityEngine.Random.Range(0, boosPrefab.Length)];
+
+                // Instancia o boss e se inscreve para o evento de destruição
+                boosInGame = Instantiate(bossPrefab, GetRandomSpawnPosition(), Quaternion.identity);
+                boosInGame.GetComponent<Boss>().EnemyDestroyedEvent.AddListener(OnEnemyDestroyed);
+
+                bossSpawned = true; // Define o flag para true para indicar que um boss foi spawnado
+
+                // Aguarda um tempo aleatório antes de tentar instanciar o próximo boss
+                yield return new WaitForSeconds(UnityEngine.Random.Range(30f, 45));
+
+                bossSpawned = false; // Define o flag para false para indicar que um novo boss pode ser spawnado
+            }
+
+            yield return null;
         }
     }
 
-    private void SpawnBos()
-    {
-        boosInGame = Instantiate(boosPrefab, new Vector3(UnityEngine.Random.Range(-10, 10), UnityEngine.Random.Range(-10, 7), 0), Quaternion.identity);
-        //boosInGame.GetComponent<Enemy>().EnemyDestroyedEvent.AddListener(OnEnemyDestroyed);
-    }
 
     private void SpawnEnemy()
     {
+        // Escolhe aleatoriamente um prefab de boss do array
+        Transform iniPrefab = enemyPrefab[UnityEngine.Random.Range(0, enemyPrefab.Length)];
+
+        // Instancia o boss e se inscreve para o evento de destruição
+        Transform enemyInGame = Instantiate(iniPrefab, GetRandomSpawnPosition(), Quaternion.identity);
         // Instancia o inimigo e se inscreve para o evento de destruição
-        enemyInGame = Instantiate(enemyPrefab, new Vector3(UnityEngine.Random.Range(-10, 10), UnityEngine.Random.Range(-10, 7), 0), Quaternion.identity);
         enemyInGame.GetComponent<Enemy>().EnemyDestroyedEvent.AddListener(OnEnemyDestroyed);
     }
 
-    private void SpawnApple() => appleInGame = Instantiate(applePrefab, new Vector3(UnityEngine.Random.Range(-10, 10), UnityEngine.Random.Range(-10, 7), 0), Quaternion.identity);
+    private void SpawnApple() => appleInGame = Instantiate(applePrefab, GetRandomSpawnPosition(), Quaternion.identity);
+
+    private Vector3 GetRandomSpawnPosition() => new Vector3(UnityEngine.Random.Range(-10f, 10f), UnityEngine.Random.Range(-7f, 7f), 0f);
 
     private void CheckAppleStatus()
     {

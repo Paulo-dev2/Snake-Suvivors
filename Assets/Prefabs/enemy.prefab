@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6684acd1b867e84fb8abc3a5fbbd3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snake: {fileID: 0}
+  damage: 8
   EnemyDestroyedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -177,7 +177,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0a4b7c64a748921499a44fce9372b624, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

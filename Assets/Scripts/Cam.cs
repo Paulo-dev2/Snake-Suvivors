@@ -26,8 +26,8 @@ public class Cam : MonoBehaviour
     private Vector3 IsSnakeWithinBounds()
     {
         return new Vector3(
-            Mathf.Clamp(snake.position.x, -13.11f, 13.8f),
-            Mathf.Clamp(snake.position.y, -9.9f, 7f),
+            Mathf.Clamp(snake.position.x, -14.86f, 16f),
+            Mathf.Clamp(snake.position.y, -11.80f, 8.90f),
             transform.position.z);
     }
 

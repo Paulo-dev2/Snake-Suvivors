@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    private float health = 100;
+    private float health = 300;
     private float speed = 6;
     private float horizontal = 0;
     private float vertical = 0;
@@ -50,7 +50,7 @@ public class Snake : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1.5f); // Espera 3 segundos antes de disparar novamente
+            yield return new WaitForSeconds(1f); // Espera 1 segundos antes de disparar novamente
             Fire();
         }
     }
