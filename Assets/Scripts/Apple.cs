@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 public class Apple : MonoBehaviour
 {
+    
     public UnityEvent AppleDestroyedEvent;
     void Start()
     {
