@@ -7,6 +7,11 @@ TagManager:
   - Snake
   - Background
   - Enemy
+  - Boss
+  - HealthBar
+  - Level
+  - HealthBoss
+  - Stars
   layers:
   - Default
   - TransparentFX
@@ -15,10 +20,10 @@ TagManager:
   - Water
   - UI
   - Background
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Snake
+  - Enemy
+  - Boss
   - 
   - 
   - 

@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: f2ab35245770d3f49924f34536a7ce1f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - LevelText: {instanceID: 0}
+  - XpProgressBar: {instanceID: 0}
+  - timeCurrent: {instanceID: 0}
+  - aplleCurrent: {instanceID: 0}
+  - applePrefab: {fileID: 8959496717232304287, guid: efa66213fa1c2ea4ca6ca7362a85a2c2, type: 3}
+  - expPrefab: {fileID: 6492522462955354502, guid: 3da208de29f4e154daac8b772ead277f, type: 3}
+  - expBigPrefab: {fileID: 6894172169589004478, guid: ecae6fdc0c8470b46874d68f469ece48, type: 3}
+  - pauseObj: {instanceID: 0}
+  - gameOverObj: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
