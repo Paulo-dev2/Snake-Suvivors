@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c0924c40cade04f93f8c4a91ee018b, type: 3}
+  m_Name: boolFireRay
+  m_EditorClassIdentifier: 
+  itemName: Bool  Ray
+  spriteItem: {fileID: -860515388, guid: 0baf57a58325ce946adb72967e3df90a, type: 3}

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4364859032953028310}
   - component: {fileID: 123997563818835776}
   - component: {fileID: 2750376874091672062}
+  - component: {fileID: -3956200434506686246}
+  - component: {fileID: -4847165058995787041}
   m_Layer: 0
   m_Name: bool_fogo
   m_TagString: Untagged
@@ -123,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   isRight: 0
+  level: 1
 --- !u!61 &123997563818835776
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -195,3 +198,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-3956200434506686246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4543989114328569385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d7f60212fd68f48925e65bb2d43f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemTypes: {fileID: 11400000, guid: ef90d2d935590e648a20f4719a29e911, type: 2}
+--- !u!114 &-4847165058995787041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4543989114328569385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec577d697e943647b6d178c6de5a7cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  isRight: 0
+  level: 1

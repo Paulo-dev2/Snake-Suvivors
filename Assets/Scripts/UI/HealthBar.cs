@@ -3,15 +3,13 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    private const float MAX_HEALTH = 300f;
+    private float MAX_HEALTH = 300f;
 
-    private float health = 300;
+    private float health = 300f;
     public Image healthBar;
 
-    public float GetHealth()
-    {
-        return health;
-    }
+    public float GetHealth() => health;
+    public float GetMaxHealth() => MAX_HEALTH;
 
     public void Damage(float damage)
     {
@@ -21,6 +19,13 @@ public class HealthBar : MonoBehaviour
 
         health -= damage;
         health = Mathf.Clamp(health, 0, MAX_HEALTH);
+        UpdateHealthBar();
+    }
+
+    public void IncrementMaxHealth(float extraMaxHealth)
+    {
+        this.MAX_HEALTH += extraMaxHealth;
+        health = Mathf.Clamp(health, 0, MAX_HEALTH); // Opcional: Ajuste a saúde atual para manter a proporção
         UpdateHealthBar();
     }
 

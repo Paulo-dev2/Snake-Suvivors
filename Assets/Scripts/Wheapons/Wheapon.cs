@@ -1,12 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Wheapon : MonoBehaviour
 {
-    public GameObject explosion;
-    public Transform firePoint;
-    private GameObject snake;
+    public GameObject habilidadePrefab; // Prefab da habilidade
+    public Transform firePoint; // Ponto de origem do disparo
+    private GameObject snake; // Referência ao objeto da cobra
 
     void Start()
     {
@@ -26,10 +25,19 @@ public class Wheapon : MonoBehaviour
     public void Fire()
     {
         float snakeRotation = snake.transform.rotation.y;
-        // Use a posição do firePoint e sua rotação
-        GameObject explosionObj = Instantiate(explosion, firePoint.position, firePoint.rotation);
-        // Se precisar acessar algum componente do objeto, você pode fazer assim:
-        Explossion explosionComponent = explosionObj.GetComponent<Explossion>();
-        explosionComponent.isRight = snakeRotation == 0;
+        bool isRight = snakeRotation == 0;
+
+        // Instancia o prefab da habilidade
+        GameObject habilidadeInstance = Instantiate(habilidadePrefab, firePoint.position, firePoint.rotation);
+
+        // Obtém o componente IWeapon da habilidade instanciada
+        IWeapon habilidadeWeapon = habilidadeInstance.GetComponent<IWeapon>();
+
+        // Verifica se o componente IWeapon foi encontrado
+        if (habilidadeWeapon != null)
+        {
+            // Chama o método Fire da habilidade
+            habilidadeWeapon.Fire(firePoint, isRight);
+        }
     }
 }

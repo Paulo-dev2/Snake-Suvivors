@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4172814351188002689}
   - component: {fileID: 2241019597463715634}
   - component: {fileID: 2349413079399470551}
-  - component: {fileID: 2538304124731163397}
+  - component: {fileID: -3710017660087613429}
   m_Layer: 0
   m_Name: boo_ray
   m_TagString: Untagged
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemTypes: {fileID: 11400000, guid: 129c0b3fe2d52ee45ac3fda8d670510e, type: 2}
---- !u!114 &2538304124731163397
+--- !u!114 &-3710017660087613429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,8 +204,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6594175458357964670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec577d697e943647b6d178c6de5a7cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 7618e584868b0e145b6e8506a1af3e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
   isRight: 0
+  level: 1

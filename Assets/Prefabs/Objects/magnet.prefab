@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2629260154670787096}
   - component: {fileID: 2282824144825277958}
   - component: {fileID: -3478755030286624439}
-  - component: {fileID: -6862261118776927223}
+  - component: {fileID: 8668227773064554921}
   m_Layer: 0
   m_Name: magnet
   m_TagString: Untagged
@@ -104,7 +104,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   snake: {fileID: 0}
---- !u!61 &-6862261118776927223
+--- !u!61 &8668227773064554921
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,7 +136,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.012704939, y: -0.009205699}
+  m_Offset: {x: 0, y: -0.005822867}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -147,5 +147,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.84753996, y: 0.8132566}
+  m_Size: {x: 1, y: 0.8777228}
   m_EdgeRadius: 0

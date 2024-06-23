@@ -12,6 +12,10 @@ TagManager:
   - Level
   - HealthBoss
   - Stars
+  - Exp
+  - Golem
+  - Wheapon
+  - Worn
   layers:
   - Default
   - TransparentFX

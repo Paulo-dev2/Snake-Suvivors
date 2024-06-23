@@ -6,8 +6,8 @@ public class Enemy : MonoBehaviour
 
     private Transform snake; // Referência ao transform do jogador
     public float followSpeed = 5f; // Velocidade de seguimento do inimigo
-    public float health = 20;
-    public float damage = 8f;
+    private float health = 20;
+    private float damage = 8f;
 
     private Animator animator;
     private Vector3 previousPosition;
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
         {
             snake = GameObject.FindGameObjectWithTag("Snake").transform;
         }
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Ground"), true);
+        //Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Ground"), true);
         animator = GetComponent<Animator>();
         previousPosition = transform.position;
 
@@ -65,10 +65,27 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void CheckMovementDirection()
+    public static void DestroyAllEnemies()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        transform.eulerAngles = horizontal > 0 ? new Vector3(0, 0, 0) : new Vector3(0, 180, 0);
+        // Encontre todos os objetos inimigos na cena e destrua-os
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.DestroyEnemy();
+        }
+    }
+
+     void CheckMovementDirection()
+    {
+        Vector3 directionToSnake = snake.position - transform.position;
+        if (directionToSnake.x > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0); // Enfrentando a direita
+        }
+        else if (directionToSnake.x < 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0); // Enfrentando a esquerda
+        }
     }
 
     public void DestroyEnemy()
@@ -88,6 +105,9 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0) DestroyEnemy();
     }
+
+    public void IncrementDamage(float force) => this.damage += force;
+    public void IncrementHealth(float life) => this.health += life;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

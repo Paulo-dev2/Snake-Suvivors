@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Ray
   m_EditorClassIdentifier: 
   itemName: Ray
-  spriteItem: {fileID: 21300000, guid: 4d98f70700827a94cb3a9c27c9e9cd0d, type: 3}
+  spriteItem: {fileID: 21300000, guid: 391a04311567f5440b361a414f79035e, type: 3}

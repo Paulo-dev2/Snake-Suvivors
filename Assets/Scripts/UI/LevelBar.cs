@@ -12,10 +12,12 @@ public class LevelBar : MonoBehaviour
     private int startExp = 0;
     [SerializeField] private Image levelBar;
     [SerializeField] private TMP_Text Level;
+    private HealthBar healthBar;
 
     void Start()
     {
         MAX_EXP = 150; // Defina um valor inicial para MAX_EXP
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>();
     }
 
     public int GetLevel() => level;
@@ -29,6 +31,8 @@ public class LevelBar : MonoBehaviour
             level++; // Incrementa o nível
             startExp = 0; // Remove a experiência necessária para passar de nível
             Level.text = level.ToString(); // Atualiza o texto do nível
+            Snake.instance.IncrementForce(3f);
+            healthBar.IncrementMaxHealth(20f); // Incrementa o máximo de saúde
             SetMaxExp(50); // Incrementa MAX_EXP em 10
         }
     }

@@ -19,19 +19,21 @@ public class ScenesController : MonoBehaviour
     }
     public void GameOver()
     {
+        isPaused = !isPaused;
+        Time.timeScale = isPaused ? 0f : 1f;
         gameOverObj.SetActive(true);
-        Time.timeScale = 0f;
     }
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(1); 
+        SceneManager.LoadScene(1);
         Time.timeScale = 1f;
     }
     public void PauseGame()
     {
         isPaused = !isPaused;
         pauseObj.SetActive(isPaused);
+        iventarioObj.SetActive(isPaused);
         Time.timeScale = isPaused ? 0f : 1f;
     }
 
@@ -42,10 +44,10 @@ public class ScenesController : MonoBehaviour
         Time.timeScale = isPaused ? 0f : 1f;
     }
 
-    public void Iventario()
+    public void ReturnHome()
     {
         isPaused = !isPaused;
-        iventarioObj.SetActive(isPaused);
         Time.timeScale = isPaused ? 0f : 1f;
+        SceneManager.LoadScene(0);
     }
 }

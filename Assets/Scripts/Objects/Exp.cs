@@ -10,9 +10,14 @@ public class Exp : MonoBehaviour
     private float velocity = 10f;
     private float followDistance = 2f; // Distância mínima para começar a seguir a cobra
 
+    public static Exp instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
-        snake = GameObject.FindGameObjectWithTag("Snake").GetComponent<Snake>();
+        snake = GameObject.FindGameObjectWithTag("Snake")?.GetComponent<Snake>();
     }
 
     private void Update()
@@ -34,6 +39,8 @@ public class Exp : MonoBehaviour
             }
         }
     }
+
+    public void SetFollowDistance(float radius) => this.followDistance = radius;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
